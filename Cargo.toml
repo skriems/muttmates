@@ -2,8 +2,12 @@
 name = "muttmates"
 version = "0.1.0"
 authors = ["Sebastian Kriems <bastobuntu@gmail.com>"]
-description = "A simple tool for retrieving email addresses in a mutt compatible format"
-license = "UNLICENSE"
+description = "Utility for retrieving email addresses in a mutt compatible format"
+homepage = "https://github.com/skriems/muttmates"
+repository = "https://github.com/skriems/muttmates"
+keywords = ["vcard"]
+categories = ["command-line-utilities", "text-processing"]
+license = "Unlicense"
 edition = "2018"
 
 [dependencies]
