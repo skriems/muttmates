@@ -2,6 +2,8 @@
 name = "muttmates"
 version = "0.1.0"
 authors = ["Sebastian Kriems <bastobuntu@gmail.com>"]
+description = "A simple tool for retrieving email addresses in a mutt compatible format"
+license = "UNLICENSE"
 edition = "2018"
 
 [dependencies]

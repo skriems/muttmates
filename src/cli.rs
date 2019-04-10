@@ -4,7 +4,7 @@ use structopt::StructOpt;
 #[derive(StructOpt, Debug)]
 #[structopt(
     name = "muttmates",
-    about = "Utility to retrieve emails from VCards in a mutt compatible fashion"
+    about = "Utility for retrieving email addresses in a mutt compatible format"
 )]
 pub struct Opt {
     /// query
