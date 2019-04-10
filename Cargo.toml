@@ -1,0 +1,9 @@
+[package]
+name = "muttmates"
+version = "0.1.0"
+authors = ["Sebastian Kriems <bastobuntu@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+structopt = "0.2.15"
+dirs = "1.0.5"

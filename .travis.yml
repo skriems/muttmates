@@ -1,0 +1,17 @@
+language: rust
+dist: xenial
+env:
+  global:
+    - RUST_BACKTRACE: full
+rust:
+  - stable
+  - nightly
+cache: cargo
+matrix:
+  fast_finish: true
+script:
+  - cargo build --verbose
+  - cargo test --verbose
+notifications:
+  email:
+    on_success: never
