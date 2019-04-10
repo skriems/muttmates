@@ -2,7 +2,10 @@ use std::path::PathBuf;
 use structopt::StructOpt;
 
 #[derive(StructOpt, Debug)]
-#[structopt(name = "vcard", about = "Utility to parse VCards")]
+#[structopt(
+    name = "muttmates",
+    about = "Utility to retrieve emails from VCards in a mutt compatible fashion"
+)]
 pub struct Opt {
     /// query
     pub query: Option<String>,
