@@ -30,7 +30,7 @@ impl<'a> FN<'a> {
     }
 
     pub fn parse(&self) -> String {
-        let splits: Vec<&str> = self.name.split(":").collect();
+        let splits: Vec<&str> = self.name.split(':').collect();
         format!("{}", splits[1])
     }
 }
@@ -40,7 +40,6 @@ impl<'a> fmt::Display for FN<'a> {
         write!(f, "{}", self.parse())
     }
 }
-
 
 /// An Enum for various EMail types
 /// TODO: please elaborate...
@@ -78,7 +77,7 @@ impl<'a> EMail<'a> {
         let mut r#type = EMailType::Other;
         let lower = prefix.to_lowercase();
 
-        if let Some(_) = lower.find("type") {
+        if lower.find("type").is_some() {
             if lower.contains("work") {
                 r#type = EMailType::Work;
             } else if lower.contains("home") {
@@ -91,7 +90,7 @@ impl<'a> EMail<'a> {
     }
 
     fn parse(&self) -> String {
-        format!("{}", self.addr)
+        self.addr.to_string()
     }
 }
 

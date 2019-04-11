@@ -36,7 +36,7 @@ impl<'a> VCard<'a> {
 
 impl<'a> fmt::Display for VCard<'a> {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        if self.email_addr.len() > 0 {
+        if !self.email_addr.is_empty() {
             write!(
                 f,
                 "{}\t{}\t{:?}",

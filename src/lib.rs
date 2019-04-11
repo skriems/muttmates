@@ -47,7 +47,7 @@ pub fn read_cards(source: &str) -> io::Result<Vec<String>> {
 
     let splits = raw
         .split("BEGIN:VCARD")
-        .filter(|x| x.len() > 0)
+        .filter(|x| !x.is_empty())
         .filter_map(|s| s.parse().ok())
         .collect::<Vec<String>>();
     Ok(splits)
@@ -80,5 +80,5 @@ fn is_vcf(file: fs::DirEntry) -> Option<fs::DirEntry> {
             }
         }
     }
-    return None;
+    None
 }
