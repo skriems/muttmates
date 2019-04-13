@@ -17,27 +17,23 @@ use std::fmt;
 /// use muttmates::fields::FN;
 ///
 /// let field = FN::new("FN:Foo Bar");
-/// assert_eq!(field.parse(), "Foo Bar" );
+/// assert_eq!(field.name, "Foo Bar" );
 /// ```
 #[derive(Debug)]
 pub struct FN<'a> {
-    name: &'a str,
+    pub name: &'a str,
 }
 
 impl<'a> FN<'a> {
-    pub fn new(name: &'a str) -> FN<'a> {
-        FN { name }
-    }
-
-    pub fn parse(&self) -> String {
-        let splits: Vec<&str> = self.name.split(':').collect();
-        format!("{}", splits[1])
+    pub fn new(raw: &'a str) -> FN<'a> {
+        let splits: Vec<&str> = raw.split(':').collect();
+        FN { name: splits[1] }
     }
 }
 
 impl<'a> fmt::Display for FN<'a> {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{}", self.parse())
+        write!(f, "{}", self.name)
     }
 }
 
