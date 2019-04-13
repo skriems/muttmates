@@ -21,6 +21,9 @@ fn run(opt: cli::Opt) -> Result<(), io::Error> {
     }
 
     if let Some(query) = &opt.query {
+        // we need to print a new line first. Otherwise mutt prints the first match into the
+        // status line ¯\_(ツ)_/¯
+        println!();
         for raw in read_cards(&source)? {
             if raw.contains(query) && raw.to_lowercase().contains("email") {
                 println!("{}", VCard::new(&raw));
