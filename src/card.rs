@@ -22,7 +22,7 @@ impl<'a> VCard<'a> {
                 continue;
             }
             if lower.starts_with("email") {
-                email_addr.push(EMail::new(line))
+                email_addr.push(EMail::new(line));
             }
         }
 
@@ -37,11 +37,26 @@ impl<'a> VCard<'a> {
 impl<'a> fmt::Display for VCard<'a> {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         if !self.email_addr.is_empty() {
-            write!(
-                f,
-                "{}\t{}\t{:?}",
-                self.email_addr[0], self.full_name, self.email_addr[0].r#type
-            )
+            if self.email_addr.len() > 1 {
+                let mut v: Vec<String> = vec![];
+                for addr in &self.email_addr {
+                    v.push(
+                        vec![
+                            addr.addr,
+                            self.full_name.name,
+                            &format!("{:?}", addr.r#type),
+                        ]
+                        .join("\t"),
+                    )
+                }
+                write!(f, "{}", v.join("\n"))
+            } else {
+                write!(
+                    f,
+                    "{}\t{}\t{:?}",
+                    self.email_addr[0], self.full_name, self.email_addr[0].r#type
+                )
+            }
         } else {
             write!(f, "{}", self.full_name)
         }
