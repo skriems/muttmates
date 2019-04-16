@@ -3,7 +3,7 @@ use std::fmt;
 use crate::fields::*;
 
 /// A `VCard` holds the new line delimited raw `String` which represents a `VCard`
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct VCard<'a> {
     pub raw: &'a str,
     pub full_name: FN<'a>,

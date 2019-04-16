@@ -19,7 +19,7 @@ use std::fmt;
 /// let field = FN::new("FN:Foo Bar");
 /// assert_eq!(field.name, "Foo Bar" );
 /// ```
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct FN<'a> {
     pub name: &'a str,
 }
@@ -55,7 +55,7 @@ pub enum EMailType {
 /// assert_eq!(email.addr, "john@doe.example");
 /// assert_eq!(email.r#type, EMailType::Work);
 /// ```
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct EMail<'a> {
     pub addr: &'a str,
     pub r#type: EMailType,
