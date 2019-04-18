@@ -16,3 +16,4 @@ dirs = "1.0.5"
 
 [badges]
 travis-ci = { repository = "skriems/muttmates", branch = "master" }
+codecov = { repository = "skriems/muttmates", branch = "master", service = "github" }

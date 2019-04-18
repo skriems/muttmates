@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/skriems/muttmates.svg?branch=master)](https://travis-ci.org/skriems/muttmates)
+[![codecov](https://codecov.io/gh/skriems/muttmates/branch/master/graph/badge.svg)](https://codecov.io/gh/skriems/muttmates)
 ![crates.io](https://img.shields.io/crates/v/muttmates.svg)
 
 muttmates
