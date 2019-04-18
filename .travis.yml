@@ -7,7 +7,7 @@ rust:
   - stable
   - nightly
 
-# cache: cargo
+cache: cargo
 
 sudo: true
 before_install:
