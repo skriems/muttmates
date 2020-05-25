@@ -40,7 +40,7 @@ impl<'a> fmt::Display for FN<'a> {
 /// An Enum for various EMail types
 /// TODO: please elaborate...
 #[derive(Debug, PartialEq)]
-pub enum EMailType {
+pub enum EMailKind {
     Home,
     Work,
     Other,
@@ -49,16 +49,16 @@ pub enum EMailType {
 /// The `EMAIL` field
 /// # Example
 /// ```
-/// use muttmates::fields::{EMail, EMailType};
+/// use muttmates::fields::{EMail, EMailKind};
 ///
 /// let email = EMail::new("EMAIL;TYPE=WORK:john@doe.example");
 /// assert_eq!(email.addr, "john@doe.example");
-/// assert_eq!(email.kind, EMailType::Work);
+/// assert_eq!(email.kind, EMailKind::Work);
 /// ```
 #[derive(Debug, PartialEq)]
 pub struct EMail<'a> {
     pub addr: &'a str,
-    pub kind: EMailType,
+    pub kind: EMailKind,
     pub pref: bool,
 }
 
@@ -71,13 +71,14 @@ impl<'a> EMail<'a> {
         };
 
         let mut kind = EMailType::Other;
+        let mut kind = EMailKind::Other;
         let lower = prefix.to_lowercase();
 
         if lower.find("type").is_some() {
             if lower.contains("work") {
-                kind = EMailType::Work;
+                kind = EMailKind::Work;
             } else if lower.contains("home") {
-                kind = EMailType::Home;
+                kind = EMailKind::Home;
             }
         }
         let pref = false;
