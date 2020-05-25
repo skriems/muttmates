@@ -65,12 +65,12 @@ pub struct EMail<'a> {
 impl<'a> EMail<'a> {
     pub fn new(raw: &'a str) -> Self {
         let splits: Vec<&str> = raw.split(":").collect();
-        let (prefix, addr) = match splits.as_slice() {
-            [prefix, addr] => (prefix, addr),
+        let (prefix, address) = match splits.as_slice() {
+            [prefix, address] => (prefix, address),
             _ => unreachable!(),
         };
 
-        let mut kind = EMailType::Other;
+        let addr = address.trim();
         let mut kind = EMailKind::Other;
         let lower = prefix.to_lowercase();
 
