@@ -11,7 +11,7 @@ pub struct VCard<'a> {
 }
 
 impl<'a> VCard<'a> {
-    pub fn new(raw: &'a str) -> VCard<'a> {
+    pub fn new(raw: &'a str) -> Self {
         let mut full_name: FN = FN::new("FN:UNKNOWN");
         let mut email_addr: Vec<EMail> = vec![];
 

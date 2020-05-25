@@ -25,7 +25,7 @@ pub struct FN<'a> {
 }
 
 impl<'a> FN<'a> {
-    pub fn new(raw: &'a str) -> FN<'a> {
+    pub fn new(raw: &'a str) -> Self {
         let splits: Vec<&str> = raw.split(':').collect();
         FN { name: splits[1] }
     }
@@ -63,7 +63,7 @@ pub struct EMail<'a> {
 }
 
 impl<'a> EMail<'a> {
-    pub fn new(raw: &'a str) -> EMail {
+    pub fn new(raw: &'a str) -> Self {
         let splits: Vec<&str> = raw.split(":").collect();
         let (prefix, addr) = match splits.as_slice() {
             [prefix, addr] => (prefix, addr),
