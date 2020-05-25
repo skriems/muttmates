@@ -53,12 +53,12 @@ pub enum EMailType {
 ///
 /// let email = EMail::new("EMAIL;TYPE=WORK:john@doe.example");
 /// assert_eq!(email.addr, "john@doe.example");
-/// assert_eq!(email.r#type, EMailType::Work);
+/// assert_eq!(email.kind, EMailType::Work);
 /// ```
 #[derive(Debug, PartialEq)]
 pub struct EMail<'a> {
     pub addr: &'a str,
-    pub r#type: EMailType,
+    pub kind: EMailType,
     pub pref: bool,
 }
 
@@ -70,19 +70,19 @@ impl<'a> EMail<'a> {
             _ => unreachable!(),
         };
 
-        let mut r#type = EMailType::Other;
+        let mut kind = EMailType::Other;
         let lower = prefix.to_lowercase();
 
         if lower.find("type").is_some() {
             if lower.contains("work") {
-                r#type = EMailType::Work;
+                kind = EMailType::Work;
             } else if lower.contains("home") {
-                r#type = EMailType::Home;
+                kind = EMailType::Home;
             }
         }
         let pref = false;
 
-        EMail { addr, r#type, pref }
+        EMail { addr, kind, pref }
     }
 
     fn parse(&self) -> String {

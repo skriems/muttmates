@@ -7,14 +7,14 @@ use muttmates::VCard;
 fn test_email_with_type() {
     let email = EMail::new("EMAIL;TYPE=WORK:john@doe.example");
     assert_eq!(email.addr, "john@doe.example");
-    assert_eq!(email.r#type, EMailType::Work);
+    assert_eq!(email.kind, EMailType::Work);
 }
 
 #[test]
 fn test_email_without_type() {
     let email = EMail::new("EMAIL:john@doe.example");
     assert_eq!(email.addr, "john@doe.example");
-    assert_eq!(email.r#type, EMailType::Other);
+    assert_eq!(email.kind, EMailType::Other);
 }
 
 #[test]
@@ -32,17 +32,17 @@ EMAIL;TYPE=HOME:john@home.example",
     assert_eq!(card.full_name.name, "John Doe".to_owned());
     assert_eq!(card.email_addr.len(), 3);
     assert_eq!(card.email_addr[0], EMail::new("EMAIL:john@doe.example"));
-    assert_eq!(card.email_addr[0].r#type, EMailType::Other);
+    assert_eq!(card.email_addr[0].kind, EMailType::Other);
     assert_eq!(
         card.email_addr[1],
         EMail::new("EMAIL;TYPE=WORK:john@work.example")
     );
-    assert_eq!(card.email_addr[1].r#type, EMailType::Work);
+    assert_eq!(card.email_addr[1].kind, EMailType::Work);
     assert_eq!(
         card.email_addr[2],
         EMail::new("EMAIL;TYPE=HOME:john@home.example")
     );
-    assert_eq!(card.email_addr[2].r#type, EMailType::Home);
+    assert_eq!(card.email_addr[2].kind, EMailType::Home);
 }
 
 #[test]

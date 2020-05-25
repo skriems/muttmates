@@ -44,7 +44,7 @@ impl<'a> fmt::Display for VCard<'a> {
                         vec![
                             addr.addr,
                             self.full_name.name,
-                            &format!("{:?}", addr.r#type),
+                            &format!("{:?}", addr.kind),
                         ]
                         .join("\t"),
                     )
@@ -54,7 +54,7 @@ impl<'a> fmt::Display for VCard<'a> {
                 write!(
                     f,
                     "{}\t{}\t{:?}",
-                    self.email_addr[0], self.full_name, self.email_addr[0].r#type
+                    self.email_addr[0], self.full_name, self.email_addr[0].kind
                 )
             }
         } else {
