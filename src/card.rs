@@ -16,12 +16,11 @@ impl<'a> VCard<'a> {
         let mut email_addr: Vec<EMail> = vec![];
 
         for line in raw.lines() {
-            let lower = line.to_lowercase();
-            if lower.starts_with("fn") {
+            if line.starts_with("FN") || line.starts_with("fn") {
                 full_name = FN::new(line);
                 continue;
             }
-            if lower.starts_with("email") {
+            if line.starts_with("EMAIL") || line.starts_with("email") {
                 email_addr.push(EMail::new(line));
             }
         }

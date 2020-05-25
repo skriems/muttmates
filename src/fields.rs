@@ -72,12 +72,11 @@ impl<'a> EMail<'a> {
 
         let addr = address.trim();
         let mut kind = EMailKind::Other;
-        let lower = prefix.to_lowercase();
 
-        if lower.find("type").is_some() {
-            if lower.contains("work") {
+        if prefix.find("TYPE").is_some() || prefix.find("type").is_some() {
+            if prefix.contains("WORK") || prefix.contains("work") {
                 kind = EMailKind::Work;
-            } else if lower.contains("home") {
+            } else if prefix.contains("HOME") || prefix.contains("home") {
                 kind = EMailKind::Home;
             }
         }
